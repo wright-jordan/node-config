@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha -r dotenv/config -r dist/mocha-hooks.js dist/**/*.test.js",
+    "test": "tsc && mocha -r dotenv/config -r dist/mocha-hooks.js dist/**/*.test.js",
     "start": "node dist/index.js",
-    "build": "rm -r dist || true && tsc",
+    "build": "rm -r dist || true && tsc && rm dist/mocha-hooks.js && find ./dist -name '*.test.js' -type f -delete",
     "dev": "tsc -w & nodemon -r dotenv/config dist/index.js"
   },
   "keywords": [],
