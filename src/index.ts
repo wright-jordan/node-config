@@ -1,22 +1,12 @@
 import { Mux, App, Handler, Handlers } from "mux";
 import http from "http";
-import crypto from "crypto";
 
-declare module "mux" {
-  interface Ctx {
-    session?: {
-      id?: string;
-    };
-  }
-}
-
-const _404: Handler = async function (r, w, ctx) {
+const _404: Handler = async function (_r, w, _ctx) {
   w.statusCode = 404;
   w.end();
 };
 
-const handler: Handler = async function (r, w, ctx) {
-  ctx.session = { id: crypto.randomBytes(16).toString("hex") };
+const handler: Handler = async function (_r, w, _ctx) {
   w.statusCode = 200;
   w.end(JSON.stringify({ hello: "world" }));
 };
