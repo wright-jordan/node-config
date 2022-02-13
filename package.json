@@ -24,10 +24,12 @@
   },
   "dependencies": {
     "cookie": "^0.4.2",
+    "hash": "github:wright-jordan/hash",
     "http-status-codes": "^2.2.0",
     "mux": "github:wright-jordan/ts-mux",
     "pg": "^8.7.3",
     "redis": "^4.0.3",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "verify": "github:wright-jordan/verify"
   }
 }
