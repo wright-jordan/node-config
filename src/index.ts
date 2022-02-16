@@ -1,23 +1,18 @@
-import { Mux, App, Handler, Handlers } from "mux";
+import { makeListener, makeRouter, Handler, Handlers } from "ts-http";
 import http from "http";
 
-const _404: Handler = async function (_r, w, _ctx) {
-  w.statusCode = 404;
-  w.end();
-};
-
-const handler: Handler = async function (_r, w, _ctx) {
-  w.statusCode = 200;
-  w.end(JSON.stringify({ hello: "world" }));
+const handler: Handler = async function (ctx) {
+  ctx.reply = JSON.stringify({ hello: "world" });
 };
 
 const handlers: Handlers = {
   "/": handler,
+  async ["404"](ctx) {
+    ctx.status = 404;
+  },
 };
 
-const mux = Mux(handlers, _404);
-const app = App(mux);
+const router = makeRouter(handlers);
+const listener = makeListener(router);
 
-const server = http.createServer(app);
-
-server.listen(8080);
+http.createServer(listener).listen(8080);

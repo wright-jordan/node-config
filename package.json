@@ -26,10 +26,10 @@
     "ajv": "^8.10.0",
     "cookie": "^0.4.2",
     "http-status-codes": "^2.2.0",
-    "mux": "github:wright-jordan/ts-mux",
     "pg": "^8.7.3",
     "redis": "^4.0.3",
     "secure": "github:wright-jordan/secure",
+    "ts-http": "github:wright-jordan/ts-http",
     "validator": "^13.7.0"
   }
 }
