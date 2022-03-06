@@ -1,5 +1,10 @@
-import { makeListener, makeRouter, Handler, Handlers } from "ts-http";
-import http from "http";
+import {
+  makeListener,
+  makeRouter,
+  Handler,
+  Handlers,
+  listenHTTP,
+} from "ts-http";
 
 const handler: Handler = async function (ctx) {
   ctx.reply = JSON.stringify({ hello: "world" });
@@ -15,4 +20,4 @@ const handlers: Handlers = {
 const router = makeRouter(handlers);
 const listener = makeListener(router);
 
-http.createServer(listener).listen(8080);
+listenHTTP(listener, 8080n);
