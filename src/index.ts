@@ -20,4 +20,4 @@ const handlers: Handlers = {
 const router = makeRouter(handlers);
 const listener = makeListener(router);
 
-listenHTTP(listener, 8080n);
+listenHTTP(listener);
